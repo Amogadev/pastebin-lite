@@ -1,35 +1,35 @@
 _**Pastebin Lite**_
-
-    A simple Pastebin-like web application that allows users to create text pastes, generate a shareable link, and view the paste until it expires based on time or view limits.
+  A simple Pastebin-like web application that allows users to create text pastes, generate a shareable link, and view the paste until it expires based on time or view limits.
 
 _**How to run the app locally**_
-
     git clone https://github.com/Amogadev/pastebin-lite.git
     cd pastebin-lite
     npm install
     npm run dev
-  
-    The app will be available at:
+
+  The app will be available at:
     http://localhost:3000
+    
 
 _**Persistence layer used**_
     Production: Vercel KV (Upstash Redis)
     Local development: In-memory JavaScript Map
+
+ Vercel KV is used in production to ensure data persists across serverless requests.
+ An in-memory store is used locally for simplicity and faster development.
   
-    Vercel KV is used in production to ensure data persists across serverless requests.
-    An in-memory store is used locally for simplicity and faster development.
 
 _**Important design decisions**_
 
-    Implemented time-based expiry (TTL) and view-count limits, where a paste becomes unavailable as soon as any constraint triggers.
-    
-    Implemented deterministic time testing using TEST_MODE=1 and the x-test-now-ms request header, allowing automated tests to control time.
-    
-    Ensured all unavailable pastes return HTTP 404 with JSON for API routes.
-    
-    Designed API responses to be stateless and serverless-safe, avoiding reliance on global mutable state.
-    
-    Paste content is rendered safely in the UI to prevent script execution.
+Implemented time-based expiry (TTL) and view-count limits, where a paste becomes unavailable as soon as any constraint triggers.
+        
+Implemented deterministic time testing using TEST_MODE=1 and the x-test-now-ms request header, allowing automated tests to control time.
+        
+Ensured all unavailable pastes return HTTP 404 with JSON for API routes.
+        
+Designed API responses to be stateless and serverless-safe, avoiding reliance on global mutable state.
+        
+Paste content is rendered safely in the UI to prevent script execution.
 
 _**Live Demo**_
 
