@@ -1,18 +1,16 @@
-async function getPaste(id) {
+import { notFound } from "next/navigation";
+
+export default async function PastePage({ params }) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/pastes/${id}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/pastes/${params.id}?preview=1`,
     { cache: "no-store" }
   );
 
-  if (!res.ok) return null;
-  return res.json();
-}
+  if (!res.ok) {
+    notFound(); 
+  }
 
-export default async function PastePage(props) {
-  const params = await props.params;
-  const data = await getPaste(params.id);
-
-  if (!data) return <h1>404 - Not Found</h1>;
+  const data = await res.json();
 
   return <pre>{data.content}</pre>;
 }

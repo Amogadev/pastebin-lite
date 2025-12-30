@@ -1,13 +1,15 @@
-export async function GET() {
-  // Local development: always healthy
-  if (process.env.NODE_ENV !== "production") {
-    return Response.json({ ok: true }, { status: 200 });
-  }
+import { store } from "@/lib/store";
 
+export async function GET() {
   try {
-    const { kv } = await import("@vercel/kv");
-    await kv.ping();
-    return Response.json({ ok: true }, { status: 200 });
+    if (process.env.NODE_ENV === "production") {
+      const { kv } = await import("@vercel/kv");
+      await kv.set("healthz", "ok", { ex: 5 });
+    } else {
+      store.set("healthz", "ok");
+    }
+
+    return Response.json({ ok: true });
   } catch {
     return Response.json({ ok: false }, { status: 500 });
   }

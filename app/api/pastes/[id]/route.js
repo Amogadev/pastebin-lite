@@ -2,8 +2,12 @@ import { store } from "@/lib/store";
 
 export async function GET(req, context) {
   const params = await context.params;
-  const key = `paste:${params.id}`;
-  const now = Date.now();
+  const id = params.id;
+  const key = `paste:${id}`;
+  const isTest = process.env.TEST_MODE === "1";
+  const headerNow = req.headers.get("x-test-now-ms");
+  const now = isTest && headerNow ? Number(headerNow) : Date.now();
+
 
   let paste;
   if (process.env.NODE_ENV === "production") {
@@ -25,7 +29,12 @@ export async function GET(req, context) {
     return Response.json({ error: "Views exceeded" }, { status: 404 });
   }
 
-  const updated = { ...paste, views: paste.views + 1 };
+  const preview = req.nextUrl.searchParams.get("preview") === "1";
+
+    let updated = paste;
+    if (!preview) {
+      updated = { ...paste, views: paste.views + 1 };
+    }
 
   if (process.env.NODE_ENV === "production") {
     const { kv } = await import("@vercel/kv");
