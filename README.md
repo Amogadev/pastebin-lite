@@ -2,18 +2,7 @@
 
   A simple Pastebin-like web application that lets users create text pastes, generate a shareable link, and  view them until they expire by time or view limit.
 
-**_Running Locally_**
-
-  git clone https://github.com/Amogadev/pastebin-lite.git
-  cd pastebin-lite
-  npm install
-  npm run dev
-
-
-  The app will be available at:
-  🔗 http://localhost:3000
-
-**_Live Demo_**
+  **_Live Demo_**
 
 🔗 https://pastebin-lite.vercel.app
 
@@ -29,6 +18,16 @@ _**Repository**_
 
 🔗 https://github.com/Amogadev/pastebin-lite
 
+**_Running Locally_**
+
+  git clone https://github.com/Amogadev/pastebin-lite.git
+  cd pastebin-lite
+  npm install
+  npm run dev
+
+
+  The app will be available at:
+  🔗 http://localhost:3000
 
 _**Persistence Layer**_
 
