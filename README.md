@@ -1,23 +1,23 @@
 _**Pastebin Lite**_
 
-A simple Pastebin-like web application that allows users to create text pastes, generate a shareable link, and view the paste until it expires based on time or view limits.
+  A simple Pastebin-like web application that allows users to create text pastes, generate a shareable link, and view the paste until it expires based on time or view limits.
 
 _**How to run the app locally**_
 
-git clone https://github.com/Amogadev/pastebin-lite.git
-cd pastebin-lite
-npm install
-npm run dev
+  git clone https://github.com/Amogadev/pastebin-lite.git
+  cd pastebin-lite
+  npm install
+  npm run dev
 
-The app will be available at:
-http://localhost:3000
+  The app will be available at:
+  http://localhost:3000
 
 _**Persistence layer used**_
   Production: Vercel KV (Upstash Redis)
   Local development: In-memory JavaScript Map
 
-Vercel KV is used in production to ensure data persists across serverless requests.
-An in-memory store is used locally for simplicity and faster development.
+  Vercel KV is used in production to ensure data persists across serverless requests.
+  An in-memory store is used locally for simplicity and faster development.
 
 _**Important design decisions**_
 
@@ -55,6 +55,7 @@ _**API Endpoints**_
   GET /p/{id}
 
 _**Notes**_
+
   Uses in-memory store locally and Vercel KV (Upstash Redis) in production
   Designed for automated API testing
 
