@@ -12,6 +12,22 @@ npm run dev
 The app will be available at:
 http://localhost:3000
 
+**_Live Demo_**
+
+https://pastebin-lite.vercel.app
+
+**_API Endpoints_**
+
+POST /api/pastes
+
+GET /api/pastes/:id
+
+GET /p/:id
+
+_**Repository**_
+
+https://github.com/Amogadev/pastebin-lite
+
 _**Persistence Layer**_
 
 Production: Vercel KV (Upstash Redis)
@@ -32,18 +48,4 @@ The API is stateless and serverless-safe, avoiding reliance on global mutable st
 
 Paste content is rendered safely to prevent script execution.
 
-**_Live Demo_**
 
-https://pastebin-lite.vercel.app
-
-**_API Endpoints_**
-
-POST /api/pastes
-
-GET /api/pastes/:id
-
-GET /p/:id
-
-_**Repository**_
-
-https://github.com/Amogadev/pastebin-lite
