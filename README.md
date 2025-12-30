@@ -51,7 +51,9 @@ _**Tech Stack**_
 _**API Endpoints**_
 
   POST /api/pastes
+  
   GET /api/pastes/{id}
+  
   GET /p/{id}
 
 _**Notes**_
