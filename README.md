@@ -25,6 +25,12 @@ API Endpoints
   GET /api/pastes/{id}
   GET /p/{id}
 
+Notes
+
+  Uses in-memory store locally and Vercel KV (Upstash Redis) in production
+  Designed for automated API testing
+
 Repository
 
   https://github.com/Amogadev/pastebin-lite
+  
