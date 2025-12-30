@@ -11,11 +11,11 @@
 
 
   The app will be available at:
-  http://localhost:3000
+  🔗 http://localhost:3000
 
 **_Live Demo_**
 
-https://pastebin-lite.vercel.app
+🔗 https://pastebin-lite.vercel.app
 
 **_API Endpoints_**
 
@@ -27,7 +27,7 @@ GET /p/:id
 
 _**Repository**_
 
-https://github.com/Amogadev/pastebin-lite
+🔗 https://github.com/Amogadev/pastebin-lite
 
 
 _**Persistence Layer**_
