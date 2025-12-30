@@ -1,77 +1,49 @@
-_**Pastebin Lite**_
+**_Pastebin Lite_**
 
-  A simple Pastebin-like web application that allows users to create text pastes, generate a shareable link, and view the paste until it expires based on time or view limits.
+A simple Pastebin-like web application that lets users create text pastes, generate a shareable link, and view them until they expire by time or view limit.
 
-_**How to run the app locally**_
+**_Running Locally_**
+git clone https://github.com/Amogadev/pastebin-lite.git
+cd pastebin-lite
+npm install
+npm run dev
 
-   git clone https://github.com/Amogadev/pastebin-lite.git
-   cd pastebin-lite
-   npm install
-   npm run dev
 
-  The app will be available at:
-    http://localhost:3000
-    
+The app will be available at:
+http://localhost:3000
 
-_**Persistence layer used**_
+_**Persistence Layer**_
 
-  Production: Vercel KV (Upstash Redis)
-    
-   Local development: In-memory JavaScript Map
+Production: Vercel KV (Upstash Redis)
 
- Vercel KV is used in production to ensure data persists across serverless requests.
- An in-memory store is used locally for simplicity and faster development.
-  
+Local Development: In-memory JavaScript Map
 
-_**Important design decisions**_
+Vercel KV is used to ensure persistence across serverless requests, while an in-memory store is used locally for simplicity.
 
-Implemented time-based expiry (TTL) and view-count limits, where a paste becomes unavailable as soon as any constraint triggers.
-        
-Implemented deterministic time testing using TEST_MODE=1 and the x-test-now-ms request header, allowing automated tests to control time.
-        
-Ensured all unavailable pastes return HTTP 404 with JSON for API routes.
-        
-Designed API responses to be stateless and serverless-safe, avoiding reliance on global mutable state.
-        
-Paste content is rendered safely in the UI to prevent script execution.
+_**Design Decisions**_
 
-_**Live Demo**_
+Pastes support time-based expiry (TTL) and view-count limits. A paste becomes unavailable as soon as any constraint is triggered.
 
-  https://pastebin-lite.vercel.app
+Implemented deterministic time testing using TEST_MODE=1 and the x-test-now-ms request header for reliable automated tests.
 
-_**Features**_
+All unavailable pastes return HTTP 404 consistently.
 
-   Create text pastes via REST API
-   
-   Generate shareable links
-   
-   Optional expiration by time or number of views
-   
-   Server-side enforcement of expiry rules
+The API is stateless and serverless-safe, avoiding reliance on global mutable state.
 
-_**Tech Stack**_
+Paste content is rendered safely to prevent script execution.
 
-  Next.js
-  
-  Node.js
-  
-  Vercel KV (Upstash Redis)
+**_Live Demo_**
 
-_**API Endpoints**_
+https://pastebin-lite.vercel.app
 
-  POST /api/pastes
-  
-  GET /api/pastes/{id}
-  
-  GET /p/{id}
+**_API Endpoints_**
 
-_**Notes**_
+POST /api/pastes
 
-  Uses in-memory store locally and Vercel KV (Upstash Redis) in production
-  
-  Designed for automated API testing
+GET /api/pastes/:id
 
-**Repository**
+GET /p/:id
 
-  https://github.com/Amogadev/pastebin-lite
-  
+_**Repository**_
+
+https://github.com/Amogadev/pastebin-lite
